@@ -1,0 +1,42 @@
+services:
+  database:
+    image: mysql:latest
+    container_name: gestor_database
+    restart: always
+    environment:
+      MYSQL_DATABASE: db_mar
+      MYSQL_PASSWORD: dbPasswordmar
+      MYSQL_ROOT_PASSWORD: dbPasswordmar
+    ports:
+      - "3306:3306"
+    volumes:
+      - gestor_database_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173" 
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    container_name: gestor_backend
+    volumes:
+      - ./uploads:/app/uploads  # Persistir imagens
+      - ./backend:/app
+    depends_on:
+      database:
+        condition: service_healthy
+
+volumes:
+  gestor_database_data:

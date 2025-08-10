@@ -1,0 +1,26 @@
+[
+    {
+        "cod_cliente": "1033",
+        "cliente": "ATANAEL RABELO GALVAO",
+        "endereco": "RUA ACEGUA,30",
+        "bairro": "SANTO ANTONIO DOS PR",
+        "cidade": "FEIRA DE SANTANA",
+        "uf": "BA",
+        "endereço_completo": "RUA ACEGUA,30, SANTO ANTONIO DOS PR, FEIRA DE SANTANA - BA",
+        "autor": 1,
+        "latitude": 1,
+        "Longitude": 2
+    },
+    {
+        "cod_cliente": "2268",
+        "cliente": "DAVI FERREIRA",
+        "endereco": "Prof. Theócrito Batista, 617",
+        "bairro": "CAJI",
+        "cidade": "LAURO FREITAS",
+        "uf": "BA",
+        "endereço_completo": "Prof. Theócrito Batista, 617, CAJI, LAURO FREITAS - BA",
+        "autor": 1,
+        "latitude": -12.8895242,
+        "longitude": -38.3361551
+    }
+]
