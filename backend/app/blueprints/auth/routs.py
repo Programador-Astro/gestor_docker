@@ -54,7 +54,7 @@ def register():
             #Adc os dados
             db.session.add(new_perfil)
             db.session.flush()
-            new_usuario = users.Usuario(email=argumentos['email'], pwd=senhaHash,perfil_id=new_perfil.id, autor=current_user.perfil.id, token=novo_token)
+            new_usuario = users.Usuario(email=argumentos['email'], pwd=senhaHash,perfil_id=new_perfil.id, autor=1, token="12442")
 
 
             #Salva os dados
