@@ -1,23 +1,54 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { loginUser } from './engine.js';
-import { Main } from './styles.js';
+import axios from 'axios';
 import Navbar from '../components/nav_bar.jsx';
 import {
   Container,
   Title,
-  Input,
   Button,
-  ErrorMessage
+  Main
 } from './styles.js';
 
 function Veiculos() {
+  const [veiculos, setVeiculos] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/logistica/veiculos")
+      .then(res => {
+        setVeiculos(res.data); // Exemplo: ["ABC1234", "DEF5678"]
+      })
+      .catch(err => console.error("Erro ao carregar veículos:", err));
+  }, []);
 
   return (
     <Container>
       <Navbar />
-      <Main> <button><Link to="/logistica/checklist">Checklist</Link></button> <button><Link to="/logistica/novo_veiculo">Cadastrar Veiculo</Link></button> </Main>
+      <Title>Lista de Veículos</Title>
+      <Main style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+        {veiculos.length > 0 ? (
+          veiculos.map((placa, index) => (
+            <Link
+              key={index}
+              to={`/logistica/veiculo/${placa}`} // Vai abrir a página desse veículo
+              style={{ textDecoration: 'none' }}
+            >
+              <Button>{placa}</Button>
+            </Link>
+          ))
+        ) : (
+          <p>Carregando veículos...</p>
+        )}
+      </Main>
+
+      {/* Botões extras fixos */}
+      <Main style={{ marginTop: '20px', display: 'flex', gap: '10px' }}>
+        <Link to="/logistica/checklist">
+          <Button>Checklist</Button>
+        </Link>
+        <Link to="/logistica/novo_veiculo">
+          <Button>Cadastrar Veículo</Button>
+        </Link>
+      </Main>
     </Container>
   );
 }

@@ -11,7 +11,9 @@ class Config:
     CORS_HEADERS = 'Content-Type'
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES')))
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'default_jwt_secret_key')
+    UPLOAD_FOLDER = os.path.abspath(os.path.join(os.getcwd(), '..', 'uploads'))
 
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
     MAIL_SERVER = os.getenv('ENVIO_EMAIL_SERVER')
     MAIL_PORT = os.getenv('ENVIO_EMAIL_PORTA')
     MAIL_USERNAME = os.getenv("ENVIO_EMAIL_EMAIL")

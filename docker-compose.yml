@@ -32,8 +32,7 @@ services:
       - "5000:5000"
     container_name: gestor_backend
     volumes:
-      - ./uploads:/app/uploads  # Persistir imagens
-      - ./backend:/app
+      - ./backend:/app 
     depends_on:
       database:
         condition: service_healthy

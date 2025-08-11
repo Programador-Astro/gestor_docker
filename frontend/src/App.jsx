@@ -6,6 +6,7 @@ import Rotas_lg from './setores/logistica/rotas/rotas.jsx';
 import Checklist from './setores/logistica/checklist/checklist.jsx';
 import Veiculos from './setores/logistica/veiculos/veiculos.jsx';
 import Novo_Veiculo from './setores/logistica/cad_veiculos/cad_veiculos.jsx';
+import VeiculoChecklists from "./setores/logistica/VeiculoChecklist/VeiculoChecklist.jsx";
 import ProtectedRoute from './components/protectedRoute.jsx';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Route path="/logistica/veiculos" element={<ProtectedRoute><Veiculos /></ProtectedRoute>} />
       <Route path="/logistica/checklist" element={<ProtectedRoute><Checklist /></ProtectedRoute>} />
       <Route path="/logistica/novo_veiculo" element={<ProtectedRoute><Novo_Veiculo /></ProtectedRoute>} />
+      <Route path="/logistica/veiculo/:placa" element={<VeiculoChecklists />} />
     </Routes>
   );
 }
