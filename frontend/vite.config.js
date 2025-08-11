@@ -5,13 +5,14 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: true,       // Permite acesso externo (útil no Docker)
-    port: 5173, // Porta padrão do Vite
+    host: true,      
+    port: 5173,
     watch: {
       usePolling: true
-    }              
+    },
+    allowedHosts: ['gestor-docker-1.onrender.com'] 
   },
   build: {
-    outDir: 'dist',        // Garantia do nome da pasta de build
+    outDir: 'dist'
   }
 })
