@@ -7,15 +7,16 @@ from io import BytesIO
 import tempfile, os, re, fitz 
 from app.utils import ler_pedidos_json, salvar_pedidos_json, limpar_texto, geocodificar_google
 from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash
 import dotenv
 dotenv.load_dotenv()
 from app import db
 UPLOAD_FOLDER = os.path.abspath(os.getenv("UPLOAD_FOLDER", "uploads"))
 
 @logistica_bp.route('/')
-@login_required
+#@login_required
 def root():
-    return 'Logistica'
+    return f"{[u.email for u in Usuario.query.all()]}"
 
 @logistica_bp.route('/cadastrar_pedido', methods = ['POST'])
 @login_required
