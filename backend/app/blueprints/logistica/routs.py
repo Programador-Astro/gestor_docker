@@ -16,8 +16,8 @@ UPLOAD_FOLDER = os.path.abspath(os.getenv("UPLOAD_FOLDER", "uploads"))
 @logistica_bp.route('/')
 #@login_required
 def root():
-    return f"{[u.email for u in Usuario.query.all()]}"
-
+    usuario = Usuario.query.filter_by(email="davi@gmail.com").first()
+    return f"{usuario.pwd}"
 @logistica_bp.route('/cadastrar_pedido', methods = ['POST'])
 @login_required
 def rotas():
