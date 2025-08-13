@@ -13,7 +13,7 @@ function Veiculos() {
   const [veiculos, setVeiculos] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/logistica/veiculos")
+    axios.get("https://gestor-docker.onrender.com/logistica/veiculos")
       .then(res => {
         setVeiculos(res.data); // Exemplo: ["ABC1234", "DEF5678"]
       })
