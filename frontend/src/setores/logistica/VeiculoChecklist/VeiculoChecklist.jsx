@@ -10,7 +10,7 @@ export default function VeiculoChecklists() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/logistica/checklist/${placa}`)
+      .get(`https://gestor-docker.onrender.com/logistica/checklist/${placa}`)
       .then((res) => {
         const sorted = res.data.sort(
           (a, b) => new Date(b.data) - new Date(a.data)
