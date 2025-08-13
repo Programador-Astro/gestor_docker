@@ -34,7 +34,7 @@ export default function Checklist() {
     const data = new FormData();
     Object.keys(formData).forEach(key => data.append(key, formData[key]));
 
-    axios.post("http://localhost:5000/logistica/checklist", data, { headers: { "Content-Type": "multipart/form-data" } })
+    axios.post("https://gestor-docker.onrender.com/logistica/checklist", data, { headers: { "Content-Type": "multipart/form-data" } })
       .then(() => alert("Checklist enviado com sucesso!"))
       .catch(() => alert("Erro ao enviar checklist"));
   };
