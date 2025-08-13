@@ -16,7 +16,7 @@ export default function Checklist() {
   });
 
   useEffect(() => {
-    axios.get("http://localhost:5000/logistica/veiculos") // Endpoint que retorna lista de placas
+    axios.get("https://gestor-docker.onrender.com/logistica/veiculos") // Endpoint que retorna lista de placas
       .then(res => setPlacas(res.data))
       .catch(err => console.error(err));
   }, []);
